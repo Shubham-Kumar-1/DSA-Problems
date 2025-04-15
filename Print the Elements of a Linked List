@@ -1,0 +1,4 @@
+def printLinkedList(head):
+    print(head.data)
+    if head.next is not None:
+        printLinkedList(head.next)
