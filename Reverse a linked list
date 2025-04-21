@@ -1,0 +1,10 @@
+def reverse(llist):
+    # Write your code here
+    if llist == None or llist.next == None:
+        return llist
+        
+    new_head = reverse(llist.next)
+    llist.next.next = llist
+    llist.next = None
+    
+    return new_head
