@@ -1,0 +1,9 @@
+def has_cycle(head):
+    hare = head
+    turtle = head 
+    while hare and hare.next :
+        hare = hare.next.next
+        turtle = turtle.next 
+        if hare == turtle:
+            return 1
+    return 0
