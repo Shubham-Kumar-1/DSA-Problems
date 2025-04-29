@@ -1,0 +1,11 @@
+def preOrder(root):
+    #Write your code here
+    cur = root
+    if cur:
+        print(cur.info, end=' ')
+        if cur.left:
+            preOrder(cur.left)
+            
+        if cur.right:
+            preOrder(cur.right)
+    return
