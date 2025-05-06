@@ -1,0 +1,12 @@
+def lca(root, v1, v2):
+    #Enter your code here
+    greater = max(v1, v2)
+    minor = min(v1, v2)
+    curr = root
+    while True:
+        if minor <= curr.info <= greater:
+            return curr
+        if curr.info < minor:
+            curr = curr.right
+        elif curr.info > greater:
+            curr = curr.left
