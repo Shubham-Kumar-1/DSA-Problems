@@ -1,0 +1,17 @@
+def getMax(operations):
+    # Write your code here
+    ansArr = []
+    stack = []
+    for s in operations:
+        t = int(s[0])
+        if t == 2:
+            stack.pop()
+        elif t == 1:
+            n = int(s[2:])
+            if stack and stack[-1] > n:
+                stack.append(stack[-1])
+            else:
+                stack.append(n)
+        else:
+            ansArr.append(stack[-1])
+    return ansArr
