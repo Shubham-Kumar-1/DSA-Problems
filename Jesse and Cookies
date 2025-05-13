@@ -1,0 +1,14 @@
+def cookies(k, A):
+    # Write your code here
+    import heapq
+
+    heapq.heapify(A)
+    count = 0
+    while not all(i >= k for i in A): # until all cookies are >= k
+        if len(A) == 1:
+            return -1
+        a, b = heapq.heappop(A), heapq.heappop(A)
+        c = a + 2 * b
+        heapq.heappush(A, c)
+        count += 1
+    return count
