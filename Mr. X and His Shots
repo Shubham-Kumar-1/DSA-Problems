@@ -1,0 +1,13 @@
+from bisect import bisect_left, bisect_right, insort
+
+def solve(shots, players):
+    slower, shigher = [], []
+    for s in shots:
+        insort(slower, s[0])
+        insort(shigher, s[1])
+    result = 0
+    for p in players:
+        start = min(bisect_left(slower,p[0]),bisect_left(shigher,p[0]))
+        end = max(bisect_right(shigher,p[1]),bisect_right(slower,p[1]))
+        result += end-start
+    return result
