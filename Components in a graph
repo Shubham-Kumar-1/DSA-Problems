@@ -1,0 +1,19 @@
+def componentsInGraph(gb):
+    # Write your code here
+    clusters = []
+    for a, b in gb:
+        clusters_to_fuse = []
+        for cluster in clusters:
+            if a in cluster or b in cluster:
+                clusters_to_fuse.append(cluster)
+        if clusters_to_fuse:
+            fused_cluster = {a, b}
+            for cluster in clusters_to_fuse:
+                for node in cluster:
+                    fused_cluster.add(node)
+                clusters.remove(cluster)
+            clusters.append(fused_cluster)
+        else:
+            clusters.append({a, b})
+    clusters_len = list(map(len, clusters))
+    return [min(clusters_len), max(clusters_len)]
