@@ -1,0 +1,21 @@
+def solve(arr):
+    # Write your code here
+    def counterAndPaths (n, arr):
+        from collections import Counter
+        counter = {key: count for key, count in Counter(arr).items() if count > 1}
+        n += sum((count * (count - 1)) // 2 for count in counter.values())
+        return n
+
+    p = 0
+    aux = [arr[0]]
+
+    for a in arr[1:]:
+        series = []
+        if a > aux[-1]:
+            while aux and aux[-1] < a:
+                series.append(aux.pop())
+        p = counterAndPaths(p, series)
+        aux.append(a)
+
+    p = counterAndPaths(p, aux)
+    return 2 * p
