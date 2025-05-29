@@ -1,0 +1,15 @@
+def solve(arr):
+    # Write your code here
+    left = []
+    right = []
+    n = len(arr)
+    for i,e in enumerate(arr):
+        if i==0 or e>= arr[i-1]:
+            left.append(0)
+        else:
+            left.append(i)
+        if i== n-1 or e>=arr[i + 1]:
+            right.append(0)
+        else:
+            right.append(i+2)
+    return max([left[i]*right[i] for i in range(n)])
