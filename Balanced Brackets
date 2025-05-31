@@ -1,0 +1,14 @@
+def isBalanced(s):
+    # Write your code here
+    combos = ["[]", "{}", "()"]
+    
+    # While there are characters available, attempt to remove combos
+    while len(s) > 0:
+        new_s = s
+        for c in combos:
+            new_s = new_s.replace(c, "")
+        # If the new_s has not changed length (ie no valid combos) return NO
+        if len(new_s) == len(s):
+            return "NO"
+        s = new_s
+    return "YES"
