@@ -1,0 +1,32 @@
+def contacts(queries):
+    # Write your code here
+    d=dict()
+    results=[]
+    for query in queries:
+        if query[0]=="add":
+            val=list(query[1])
+            h=d
+            while len(val)>0:
+                c=val.pop(0)
+                if c in h:
+                    h[c][0]+=1
+                else:
+                    h[c]=[1, dict()]
+                h=h[c][1]
+                            
+        else:
+            val=list(query[1])
+            h=d 
+            result=0
+            while len(val)>0:
+                c=val.pop(0)
+                if c in h:
+                    if len(val)==0:
+                        result=h[c][0]
+                    else:
+                        h=h[c][1]
+                else:
+                    break
+            results.append(result)
+                
+    return results
