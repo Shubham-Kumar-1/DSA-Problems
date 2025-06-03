@@ -1,0 +1,27 @@
+def swapNodes(indexes, queries):
+    # Write your code here
+    result = []
+    for k in queries:
+        res = []
+        swap(indexes, 1, 1, k, res)
+        #inOrder(indexes, 1, res)
+        result.append(res)
+    return result
+
+def swap(nodes, depth, idx, k, res):
+    if idx == -1:
+        return
+    if depth % k == 0:
+        nodes[idx - 1][0], nodes[idx - 1][1] = nodes[idx - 1][1], nodes[idx - 1][0]
+    swap(nodes, depth + 1, nodes[idx - 1][0], k, res)
+    res.append(idx)
+    swap(nodes, depth + 1, nodes[idx - 1][1], k, res)
+        
+def inOrder(nodes, idx, result):
+    left = nodes[idx - 1][0]
+    right = nodes[idx - 1][1]
+    if left != -1:
+        inOrder(nodes, left, result)
+    result.append(idx)
+    if right != -1:
+        inOrder(nodes, right, result)
