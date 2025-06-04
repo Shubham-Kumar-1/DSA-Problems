@@ -1,0 +1,21 @@
+def arrayManipulation(n, queries):
+    # Write your code here
+    arr = [0] * (n )    
+    
+    for i in queries:
+        l=i[0]-1 #made it 0th index
+        r=i[1] #let it be 1 indexed
+        arr[l]+=i[2]
+        if r<n: #so that r doesn't cause out of index error
+            arr[r]-=i[2]
+            
+    
+    # Compute prefix sum and track the maximum value
+    max_value = 0
+    current_sum = 0
+    for i in arr:
+        current_sum += i
+        if current_sum > max_value:
+            max_value = current_sum
+    
+    return max_value
