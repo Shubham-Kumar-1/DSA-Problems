@@ -1,0 +1,20 @@
+def solve(t):
+    ranges, n = [], len(t)
+    for i, e in enumerate(t):
+        if e >= n or e == 0:
+            continue
+        ranges.extend([((i-n+1+n)%n+1, 0), ((i-e+n)%n+1, 1)]) 
+    ranges.sort(key=lambda e: (e[0], e[1])      
+    max_, current, first_index = 0, 0, 1
+    for _ in range(2): 
+        for i, v in ranges:
+            if max_ == current:
+                first_index = min(i, first_index)
+            if v == 0: 
+                current += 1
+                if max_ < current:
+                    max_ = current
+                    first_index = i 
+            else:
+                current -= 1
+    return first_index
