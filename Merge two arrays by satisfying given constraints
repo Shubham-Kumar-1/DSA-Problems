@@ -1,0 +1,19 @@
+def merge(X, Y, m, n):
+    k = m + n + 1
+    while m >= 0 and n >= 0:
+        if X[m] > Y[n]:
+            X[k] = X[m]
+            m = m - 1
+            k = k - 1
+        else:
+            X[k] = Y[n]
+            n = n - 1
+            k = k - 1
+
+    while n >= 0:
+        X[k] = Y[n]
+        k = k - 1
+        n = n - 1
+ 
+    for i in range(len(Y)):
+        Y[i] = 0
