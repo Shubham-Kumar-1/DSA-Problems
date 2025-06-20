@@ -1,0 +1,10 @@
+def printAllSublists(nums):
+ 
+    for i in range(len(nums)):
+        total = 0
+      
+        for j in range(i, len(nums)):
+            total += nums[j]
+           
+            if total == 0:
+                print('Sublist', (i, j))
